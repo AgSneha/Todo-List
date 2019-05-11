@@ -100,12 +100,18 @@ App = {
 	 		else {
 	 			$('#taskList').append($newTaskTemplate)
 	 		}
+
+	 		//show tasks
 	 		$newTaskTemplate.show()
 	 	}
-	 	//show tasks
-	 	//$newTaskTemplate.show()
+	},
 
-	 },
+	createTask: async () => {
+		App.setLoading(true)
+		const content = $('#newTask').val()
+		await App.todoList.createTask(content)
+		window.location.reload()
+	},
 
 	 setLoading: (boolean) => {
 	 	App.loading = boolean
